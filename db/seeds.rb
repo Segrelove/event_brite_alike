@@ -15,7 +15,7 @@ ActiveRecord::Base.connection.reset_pk_sequence!('events')
 
 
 10.times do 
-  User.create(email: Faker::Internet.email, encrypted_password: "test123", description: Faker::Company.bs, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
+  User.create(email: "#{Faker::Name.first_name}@yopmail.com", encrypted_password: "test123", description: Faker::Company.bs, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
 end
 
 10.times do 
