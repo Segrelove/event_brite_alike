@@ -4,6 +4,6 @@ class AttendanceMailer < ApplicationMailer
 
     @url = 'https://monsite.com/event'
 
-    mail(to:@user.guest.email, subject: 'Merci, tu es bien inscrit !')
+    mail(to:@user.event.admin.email, subject: 'Un nouveau participant !')
   end
 end

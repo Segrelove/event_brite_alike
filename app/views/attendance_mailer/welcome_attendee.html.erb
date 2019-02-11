@@ -4,9 +4,9 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Salut <%= @user.guest.first_name %> et merci pour ton inscription !</h1>
+    <h1>Salut <%= @user.event.admin.first_name %> , quelqu'un s'est inscrit à ton event !</h1>
     <p>
-      Tu t'es inscrit sur l'event n'° 1 en utilisant l'e-mail suivant : <%= @user.guest.email %>.
+      Quelqu'un s'est inscrit à ton evenement !.
     </p>
     <p>
       Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
