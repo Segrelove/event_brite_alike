@@ -7,3 +7,4 @@ rails db:migrate
 rails db:seed
 rspec
 
+![Alt Text](https://media.giphy.com/media/3o7abBP0nMjrdIvaCY/giphy.gif)
