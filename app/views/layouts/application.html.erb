@@ -4,12 +4,54 @@
     <title>EventBrite</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+      <a class="navbar-brand" href="<%= root_path %>">EventBrite</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="<%= root_path %>">Home</a>
+          </li>
+          <% if user_signed_in? %>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= new_event_path %>">Créer un événement</a>
+          </li>
+          <% end %>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+        </ul>
+        <% if user_signed_in? %>
+        <span class="navbar-text">
+            <a class="nav-link" href="<%= user_path(current_user.id) %>">Mon Profil</a>
+        </span>
+        <span class="navbar-text">
+            <%= link_to('Log Out', destroy_user_session_path, method: :delete, class: 'nav-link') %>  
+        </span>
+        <% else %>
+        <span class="navbar-text">
+            <a class="nav-link" href="<%= new_user_session_path %>">Log In</a>
+        </span>
+        <span class="navbar-text">
+            <a class="nav-link" href="<%= new_user_registration_path %>">Sign Up</a>
+        </span>
+        <% end %>
+      </div>
+    </nav>
+    <% flash.each do |name, msg| %>
+      <div class="alert alert-<%= name %> text-center">
+        <%= msg %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
