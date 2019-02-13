@@ -7,5 +7,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-  resources :events, only: [:new, :show, :create, :destroy]
+  resources :events do 
+    resources :participations, only: [:index, :new, :create, :show]
+  end
+ 
 end

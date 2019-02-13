@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   
   def index
     @events = Event.all
@@ -10,7 +10,23 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])    
+    @event = Event.find(params[:id])   
+    puts params[:id]
+    @attendances = Attendance.all
+  end
+
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      flash[:success] = "Ton événement a bien été modifié !"
+      redirect_to event_path(@event.id)
+    else
+      render :edit 
+    end
   end
 
   def create
@@ -27,4 +43,21 @@ class EventsController < ApplicationController
     else
     end
   end
+
+  def destroy
+    @event = Event.find(params[:id])
+    if @event.destroy
+      flash[:primary] = "Ton événement a bien été supprimé."
+      redirect_to root_path
+      return
+    else
+    end
+  end
+
+  private
+
+  def event_params
+    params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location)
+  end
+
 end

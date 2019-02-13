@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  has_many :attendances
+  has_many :attendances, dependent: :delete_all
   belongs_to :admin, class_name: "User"
   
   # validates :duration, 
