@@ -10,3 +10,5 @@ rails db:seed
 rspec
 
 Enjoy :)
+
+Lien en production : https://event-brite-segrelove.herokuapp.com
