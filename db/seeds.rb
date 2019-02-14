@@ -6,16 +6,20 @@ require 'faker'
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# User.destroy_all
-# ActiveRecord::Base.connection.reset_pk_sequence!('users')
-# Attendance.destroy_all
-# ActiveRecord::Base.connection.reset_pk_sequence!('attendances')
-# Event.destroy_all
-# ActiveRecord::Base.connection.reset_pk_sequence!('events')
+User.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('users')
+Attendance.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('attendances')
+Event.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('events')
 
-# 10.times do 
-#   Event.create(start_date: Faker::Date.forward(20), duration: 30, title: Faker::Book.title, description: Faker::ChuckNorris.fact, price: rand(1..900), location: Faker::Address.city, admin_id: 1)
-# end
+10.times do 
+  User.create(first_name: "Maxime", last_name: "LS", email: Faker::Internet.email, password: "TEST123", description: 'coucou c moi')
+end
+
+10.times do 
+  Event.create(start_date: Faker::Date.forward(20), duration: 30, title: Faker::Book.title, description: Faker::ChuckNorris.fact, price: rand(1..900), location: Faker::Address.city, admin_id: 1)
+end
 
 20.times do 
   Attendance.create(stripe_customer_id: rand(1000.9999), guest_id: rand(1..10), event_id: rand(1..10))
