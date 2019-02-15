@@ -40,7 +40,9 @@ gem 'dotenv-rails'
 gem 'devise'
 gem 'stripe'
 gem 'mini_magick'
-gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+group :production do 
+  gem 'faker'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
