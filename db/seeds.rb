@@ -13,8 +13,10 @@ ActiveRecord::Base.connection.reset_pk_sequence!('attendances')
 Event.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('events')
 
+User.create(first_name: "Maxime", last_name: "Le Segretain", email: "mlesegret@gmail.com", password: "TEST123", description: "Je suis le Super Admin", is_admin: true)
+
 10.times do 
-  User.create(first_name: "Maxime", last_name: "LS", email: Faker::Internet.email, password: "TEST123", description: 'coucou c moi')
+  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "TEST123", description: Faker::Company.bs, is_admin: false)
 end
 
 10.times do 
