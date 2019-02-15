@@ -37,6 +37,7 @@ class EventsController < ApplicationController
     price: params[:price],
     location: params[:location],
     admin_id: current_user.id)
+    @event.picture.attach(params[:picture])
     puts @event.price.class
     puts @event.duration.class
     if @event.save

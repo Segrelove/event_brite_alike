@@ -3,7 +3,7 @@
   <h1 class="display-4"><%= @event.title %> | <%= @event.location %></h1>
   <p class="lead"><%= @event.description %></p>
   <%if @event.picture.attached?%>
-  <%= image_tag(@event.picture, :size => '100x100')  %>
+  <%= image_tag(@event.picture, :size => '100x130')  %>
   <%else%>
     <i class="small">Il n'y a pas encore de photo liée à cet événement</i>
   <%end%>
@@ -22,6 +22,10 @@
 
     <% if is_user_going != true %>
     <a class="btn btn-dark btn-lg" target="_blank" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOIdc1mb0bSUZeaaU7Ub21D1ggqcwOR_MkVCkasOkIoaoml9yi">Retirer sa participation</a>
+    <% end %>
+
+    <% if user_signed_in? && current_user.is_admin %>
+    <a class="btn btn-default" href="<%= edit_admin_event_path(@event.id) %>" role="button">Modifier l'event en tant qu'admin</a>
     <% end %>
 
   <% else %>
