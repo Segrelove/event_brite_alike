@@ -25,6 +25,12 @@
       <label>Description</label>
         <%= f.text_area :description, class: "form-control" %>
     </div>
+
+    <div class="form-group">
+      <%= label_tag 'Image' %>
+      <%= f.file_field :picture, class: 'form-control' %>
+    </div>
+
     <div class="form-group">
       <button type="submit" class="btn btn-dark text-light">Modifier l'évenement</button>
       <a href="<%= events_path %>" class="btn btn-default">Revenir à l'accueil</button>

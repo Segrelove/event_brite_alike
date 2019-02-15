@@ -1,7 +1,12 @@
 <div class="container mt-3" >
  <div class="jumbotron bg-light">
-  <h1 class="display-4"><%= @event.title %> à <%= @event.location %></h1>
+  <h1 class="display-4"><%= @event.title %> | <%= @event.location %></h1>
   <p class="lead"><%= @event.description %></p>
+  <%if @event.picture.attached?%>
+  <%= image_tag(@event.picture, :size => '100x100')  %>
+  <%else%>
+    <i class="small">Il n'y a pas encore de photo liée à cet événement</i>
+  <%end%>
   <hr class="my-4">
   <p>Le <%= @event.start_date %>, pendant <%= @event.duration %> minutes, et pour la modique somme de <%= @event.price %>€, vous aurez la joie de participer à ce pure event. </p>
   <p class="lead">

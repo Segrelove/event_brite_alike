@@ -11,7 +11,6 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])   
-    puts params[:id]
     @attendances = Attendance.all
   end
 
@@ -34,9 +33,12 @@ class EventsController < ApplicationController
     start_date: params[:start_date], 
     title: params[:title],
     description: params[:description],
+    duration: params[:duration],
     price: params[:price],
     location: params[:location],
     admin_id: current_user.id)
+    puts @event.price.class
+    puts @event.duration.class
     if @event.save
       flash[:success] = "Event créé ! "
       redirect_to event_path(@event.id)
@@ -57,7 +59,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location)
+    params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location, :picture)
   end
 
 end
